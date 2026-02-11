@@ -1,5 +1,5 @@
 [build]
-  command = "flutter build web --release"
+  command = "bash build_netlify.sh"
   publish = "build/web"
 
 [[redirects]]
@@ -9,6 +9,7 @@
 
 [build.environment]
   FLUTTER_VERSION = "3.38.9"
+  FLUTTER_CHANNEL = "stable"
 
 # Headers for better performance
 [[headers]]

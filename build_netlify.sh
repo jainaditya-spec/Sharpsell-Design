@@ -4,13 +4,31 @@ set -e
 
 echo "🚀 Starting Netlify build process..."
 
-# Check if Flutter is installed
+# Install Flutter if not found
 if ! command -v flutter &> /dev/null; then
-    echo "❌ Flutter not found. Please install Flutter first."
-    exit 1
+    echo "📥 Installing Flutter..."
+    
+    # Download Flutter SDK
+    FLUTTER_VERSION="${FLUTTER_VERSION:-3.38.9}"
+    FLUTTER_CHANNEL="${FLUTTER_CHANNEL:-stable}"
+    
+    cd $HOME
+    git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL --depth 1
+    export PATH="$PATH:$HOME/flutter/bin"
+    
+    # Precache Flutter
+    flutter precache --web
+    
+    echo "✅ Flutter installed: $(flutter --version | head -n 1)"
+else
+    echo "✅ Flutter found: $(flutter --version | head -n 1)"
 fi
 
-echo "✅ Flutter found: $(flutter --version | head -n 1)"
+# Enable Flutter web
+flutter config --enable-web
+
+# Navigate to project directory
+cd /opt/build/repo
 
 # Get dependencies
 echo "📦 Getting Flutter dependencies..."
