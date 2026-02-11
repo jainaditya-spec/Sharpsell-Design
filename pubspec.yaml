@@ -1,0 +1,49 @@
+name: sharpsell_design_storybook
+description: Sharpsell Design System Component Library - A Storybook-like component showcase built with Flutter Material 2
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Storybook for Flutter
+  storybook_flutter: ^0.14.1
+  
+  # Material Design
+  material_design_icons_flutter: ^7.0.7296
+  
+  # State Management
+  provider: ^6.1.1
+  
+  # Networking for Zeplin/Figma integration
+  http: ^1.1.2
+  dio: ^5.4.0
+  
+  # JSON handling
+  json_annotation: ^4.8.1
+  
+  # Utilities
+  collection: ^1.18.0
+  meta: ^1.11.0
+  path: ^1.8.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  storybook_flutter_test: ^0.1.0+2
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
+  
+  # Assets
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
